@@ -1,18 +1,8 @@
 var round = 1;
 var pattern = new Array();
 var response = new Array();
-pattern[0] = Math.floor((Math.random()*4)+1);;
+pattern[0] = Math.floor((Math.random()*4)+1);
 var i=0;
-
-//window.onload = animation_loop(pattern.length);
-function start() {
-	animation_loop(pattern.length);
-}
-
-function animation_loop(n) {
-    lightUp(pattern[i]);
-    setTimeout(function() { i++; if (n>1) { animation_loop(n-1); } }, 800);
-};
 
 var buttons = document.getElementsByTagName('li');
 for(var j=0; j<buttons.length; j++)
@@ -31,6 +21,22 @@ for(var j=0; j<buttons.length; j++)
 		document.getElementById(getColor(this.innerHTML)).style.border = "none";
 	}
 }
+
+function start() {	
+	round = 1;
+	i = 0;
+	response = [];
+	pattern = [];
+	pattern[0] = Math.floor((Math.random()*4)+1);
+	animation_loop(pattern.length);
+	document.getElementById('round').innerHTML = round;		
+}
+
+function animation_loop(n) {
+    lightUp(pattern[i]);
+    setTimeout(function() { i++; if (n>1) { animation_loop(n-1); } }, 800);
+}
+
 
 function checkLose()
 {
