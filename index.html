@@ -1,0 +1,173 @@
+<html>
+	<head>
+		<title>Simon Game</title>
+		<style>
+		.simonContainer {
+          height: 300px;
+		     }
+		.simonBackground {
+		          background-color: #FFF;
+		          position: absolute;
+		          width: 302px;
+		          height: 295px;
+		          -moz-border-radius: 150px;
+		          -webkit-border-radius: 150px;
+		          -o-border-radius: 150px;
+		          border-radius: 150px;
+		          -moz-box-shadow: 2px 1px 12px #aaa;
+		          -webkit-box-shadow: 2px 1px 12px #aaa;
+		          -o-box-shadow: 2px 1px 12px #aaa;
+		          box-shadow: 2px 1px 12px #aaa;
+		} 
+
+		ul, li { list-style: none; padding:0; margin:0; }
+
+		#red, #blue, #yellow, #green {opacity: 0.6;}
+		#red {
+		    background: #FF5643; 
+		    border-radius: 150px 150px 150px 150px;
+		    clip: rect(0px, 300px, 150px, 150px);
+		    height: 290px;
+		    position: absolute;
+		    width: 296px;
+		    text-indent:10000px;
+		}
+		#blue {
+		     background: dodgerblue;
+		     border-radius: 150px 150px 150px 150px;    
+		     clip: rect(0px, 150px, 150px, 0px);
+		     height: 290px;
+		     position: absolute;
+		     width: 300px;
+		    text-indent:10000px;
+		}
+
+		#yellow {
+		     background: #FEEf33;
+		     border-radius: 150px 150px 150px 150px;    
+		     clip: rect(150px, 150px, 300px, 0px);
+		     height: 290px;
+		     position: absolute;
+		     width: 300px;
+		    text-indent:10000px;
+		}
+
+		#green {
+		     background: #BEDE15;
+		     border-radius: 150px 150px 150px 150px;    
+		     clip: rect(150px,300px, 300px, 150px);
+		     height: 290px;
+		     position: absolute;
+		     width: 296px;
+		    text-indent:10000px;
+		}
+		</style>
+				
+	</head>
+
+	<body>
+		<h1>Play Simon!</h1>
+		<div class="simonContainer">
+			<div class="simonBackground"></div>
+			<ul>
+				<li id="red">1</li>
+				<li id="blue">2</li>
+				<li id="yellow">3</li>
+				<li id="green">4</li>
+			</ul>
+		</div>
+		<h3>Round: </h3>
+		<div id="round">1</div>
+		<script>
+			var round = 1;
+			var pattern = new Array();
+			var response = new Array();
+			pattern[0] = Math.floor((Math.random()*4)+1);;
+			var i=0;
+
+			window.onload = animation_loop(pattern.length);
+			
+			function animation_loop(n) {
+			    lightUp(pattern[i]);
+			    setTimeout(function() { i++; if (n>1) { animation_loop(n-1); } }, 800);
+			};
+
+			var buttons = document.getElementsByTagName('li');
+			for(var j=0; j<buttons.length; j++)
+			{
+				buttons[j].onclick = function() {
+					var temp = this.innerHTML;
+					response.push(temp);
+					checkLose();
+					document.getElementById('round').innerHTML = round;		
+				}
+
+				buttons[j].onmouseover = function() {
+					document.getElementById(getColor(this.innerHTML)).style.border = "2px solid black";
+				}
+				buttons[j].onmouseout = function() {
+					document.getElementById(getColor(this.innerHTML)).style.border = "none";
+				}
+			}
+
+			function checkLose()
+			{
+				for(var j = 0; j < response.length; j++)
+				{
+					if(response[j] != pattern[j])
+					{
+						alert("You lost! You made it " + round + " rounds.");
+					    location.reload(); 
+					}
+				}
+				//If player got the full pattern right, add another color and keep going!
+				if(response.length == pattern.length)
+				{
+					nextRound();
+				}
+			}
+
+			function nextRound()
+			{
+				i = 0;
+				round++;
+				var rand = Math.floor((Math.random()*4)+1); 
+				pattern.push(rand);
+				response = [];
+				animation_loop(pattern.length);
+			}
+
+
+			/*------------- Helper functions -----------------*/
+			function getColor(colorIn)
+			{
+				var color; 
+
+				if(colorIn == 1)
+					color = "red";
+				else if (colorIn == 2)
+					color = "blue";
+				else if (colorIn == 3)
+					color = "yellow";
+				else
+					color = "green";
+
+				return color;
+			}
+
+			function lightUp(colorIn)
+			{
+				color = getColor(colorIn);
+				document.getElementById(color).style.opacity = 1;
+				setTimeout(function() { lightDown(pattern[colorIn-1]) }, 400);
+			}
+
+			function lightDown(colorIn)
+			{
+				color = getColor(colorIn);
+				document.getElementById(color).style.opacity = .6;
+			}
+
+		</script>
+	</body>
+</html>
