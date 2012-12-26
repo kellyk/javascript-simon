@@ -4,7 +4,10 @@ var response = new Array();
 pattern[0] = Math.floor((Math.random()*4)+1);;
 var i=0;
 
-window.onload = animation_loop(pattern.length);
+//window.onload = animation_loop(pattern.length);
+function start() {
+	animation_loop(pattern.length);
+}
 
 function animation_loop(n) {
     lightUp(pattern[i]);
