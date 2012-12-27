@@ -12,6 +12,8 @@ for(var j=0; j<buttons.length; j++)
 		response.push(temp);
 		checkLose();
 		document.getElementById('round').innerHTML = round;		
+		var soundfile = String(temp) + ".mp3";
+		playSound(soundfile);
 	}
 
 	buttons[j].onmouseover = function() {
@@ -85,6 +87,8 @@ function getColor(colorIn)
 
 function lightUp(colorIn)
 {
+	var soundfile = String(colorIn) + ".mp3";
+	playSound(soundfile);
 	color = getColor(colorIn);
 	document.getElementById(color).style.opacity = 1;
 	setTimeout(function() { lightDown(pattern[colorIn-1]) }, 400);
@@ -95,3 +99,8 @@ function lightDown(colorIn)
 	color = getColor(colorIn);
 	document.getElementById(color).style.opacity = .6;
 }
+
+function playSound(soundfile) {
+ document.getElementById("sound").innerHTML=
+ "<embed src=\"./sounds/"+soundfile+"\" hidden=\"true\" autostart=\"true\" loop=\"false\" />";
+ }
