@@ -36,7 +36,7 @@ p[data-action="lose"] {
 }
 
 .container {
-	width: 500px;
+	width: 540px;
 	margin: 0 auto;
 }
 
@@ -93,7 +93,7 @@ p[data-action="lose"] {
 }
 
 .game-info {
-	margin-top: 115px;
+	margin-top: 90px;
 }
 
 .game-info button {
@@ -107,4 +107,12 @@ p[data-action="lose"] {
 }
 .game-info button:hover {
 	background: #78BCFF;
+}
+
+.game-options h2 {
+	margin-top: 30px;
+	margin-bottom: 0;
+}
+.game-options input[type="radio"] {
+	margin-right: 10px;
 }

@@ -3,6 +3,7 @@ var Simon = (function() {
  
 	var sequence, copy, round;
 	var active = true;
+	var mode = "normal";
 
 	$(document).ready(function() {
 		initSimon();
@@ -10,6 +11,7 @@ var Simon = (function() {
    
     function initSimon() {
 		$('[data-action=start]').on('click', startGame);
+		$('input[name=mode]').on('change', changeMode);
 	}
 
 	function startGame() {
@@ -55,10 +57,12 @@ var Simon = (function() {
     }
 
     function deactivateSimonBoard() {
-		$('.simon')
-			.off('click', '[data-tile]')
-			.off('mousedown', '[data-tile]')
-			.off('mouseup', '[data-tile]');
+		if (mode !== "free-board") {
+			$('.simon')
+				.off('click', '[data-tile]')
+				.off('mousedown', '[data-tile]')
+				.off('mouseup', '[data-tile]');
+		}
     }
 
 	function checkLose() {
@@ -83,32 +87,40 @@ var Simon = (function() {
 		$($('[data-round]')[0]).text("0");
     }
 
+    function changeMode(e) {
+		mode = e.target.value;
+    }
+
     /*----------------- Helper functions -------------------*/
 
     function animate() {
 		$.each(sequence, function(key, tile) {
 			setTimeout(function() {
+				playSound(tile);
 				lightUp(tile);
 			}, 700 * key);
 		});
 	}
 
     function lightUp(tile) {
-		playSound(tile);
-		$('[data-tile=' + tile + ']').animate({
-			opacity: 1
-		}, 300, function() {
-			setTimeout(function() {
-				$('[data-tile=' + tile + ']').css('opacity', 0.6);
-			}, 300);
-		});
+		if (mode !== "sound-only") {
+			$('[data-tile=' + tile + ']').animate({
+				opacity: 1
+			}, 300, function() {
+				setTimeout(function() {
+					$('[data-tile=' + tile + ']').css('opacity', 0.6);
+				}, 300);
+			});
+		}
     }
 
     function playSound(tile) {
-		var audio = $('<audio autoplay></audio>');
-		audio.append('<source src="sounds/' + tile + '.ogg" type="audio/ogg" />');
-		audio.append('<source src="sounds/' + tile + '.mp3" type="audio/mp3" />');
-		$('[data-action=sound]').html(audio);
+		if (mode !== "light-only") {
+			var audio = $('<audio autoplay></audio>');
+			audio.append('<source src="sounds/' + tile + '.ogg" type="audio/ogg" />');
+			audio.append('<source src="sounds/' + tile + '.mp3" type="audio/mp3" />');
+			$('[data-action=sound]').html(audio);
+		}
     }
 
 	function randomNumber() {
