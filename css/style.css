@@ -1,0 +1,110 @@
+body {
+	font-family: Arial, serif;
+	color: #333;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	-o-user-select: none;
+	user-select: none;
+}
+
+h1 {
+	margin: 1em 0 2em;
+	text-align: center;
+}
+
+ul {
+	list-style: none;
+}
+
+ul, li {
+	padding: 0;
+	margin: 0;
+}
+
+p[data-action="lose"] {
+	display: none;
+}
+
+.active {
+	opacity: 1 !important;
+}
+
+.clearfix {
+	width: 100%;
+	clear: both;
+}
+
+.container {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.simon {
+	background: #fff;
+	position: relative;
+	float: left;
+	margin-right: 3em;	
+	width: 302px;
+	height: 295px;
+	-webkit-border-radius: 150px 150px 150px 150px;
+	border-radius: 150px 150px 150px 150px;
+    -moz-box-shadow: 2px 1px 12px #aaa;
+    -webkit-box-shadow: 2px 1px 12px #aaa;
+    -o-box-shadow: 2px 1px 12px #aaa;
+    box-shadow: 2px 1px 12px #aaa;
+}
+
+.red, .blue, .yellow, .green {
+	opacity: 0.6;
+	height: 290px;
+	-webkit-border-radius: 150px 150px 150px 150px;
+	border-radius: 150px 150px 150px 150px;
+	position: absolute;
+	text-indent: 10000px;
+}
+
+.red:hover, .blue:hover, .yellow:hover, .green:hover {
+	border: 2px solid black
+}
+
+.red {
+	background: #FF5643;
+	clip: rect(0px, 300px, 150px, 150px);
+	width: 296px;
+}
+
+.blue {
+	background: dodgerblue;
+	clip: rect(0px, 150px, 150px, 0px);
+	width: 300px;
+}
+
+.yellow {
+	background: #FEEF33;
+	clip: rect(150px, 150px, 300px, 0px);
+	width: 300px;
+}
+
+.green {
+	background: #BEDE15;
+	clip: rect(150px,300px, 300px, 150px);
+	width: 296px;
+}
+
+.game-info {
+	margin-top: 115px;
+}
+
+.game-info button {
+	width: 5em;
+	font-size: 1.4em;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	background: #6DABE8;
+	border: none;
+	padding: 0.3em 0.6em;
+}
+.game-info button:hover {
+	background: #78BCFF;
+}

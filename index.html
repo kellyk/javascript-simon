@@ -1,26 +1,31 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Simon Game</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
-				
-	</head>
+<head>
+	<meta charset="utf-8">
+	<title>Simon Says - JavaScript</title>
+	<link rel="stylesheet" href="css/style.css" />
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/simon.js"></script>
 
-	<body>
-		<h1>Play Simon!</h1>
-		<div class="simonContainer">
-			<div class="simonBackground"></div>
+</head>
+<body>
+	<div class="container">
+	<h1>Simon Says</h1>
+		<div class="simon">
 			<ul>
-				<li id="red">1</li>
-				<li id="blue">2</li>
-				<li id="yellow">3</li>
-				<li id="green">4</li>
+				<li class="red" data-tile="1"></li>
+				<li class="blue" data-tile="2"></li>
+				<li class="yellow" data-tile="3"></li>
+				<li class="green" data-tile="4"></li>
 			</ul>
 		</div>
-		<div id="sound"></div>
-		<button id="start" >Start</button>
-		<h3>Round: </h3>
-		<div id="round"></div>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
-		<script src="script.js" type="text/javascript"></script>
-	</body>
+		<div class="game-info">
+			<h2>Round: <span data-round="0">0</span></h2>
+			<button data-action="start" >Start</button>
+			<p data-action="lose">Sorry, you lost after <span data-round="0"></span> rounds!</p>
+		</div>
+		<div data-action="sound"></div>
+	</div>
+</body>
 </html>
