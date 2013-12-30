@@ -63,7 +63,7 @@ var Simon = (function() {
 
 	function checkLose() {
 		// copy array will be empty when user has successfully completed sequence
-		if (copy.length === 0) {
+		if (copy.length === 0 && active) {
 			deactivateSimonBoard();
 
 			// slight pause between rounds
