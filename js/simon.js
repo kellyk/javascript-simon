@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	
+
 	var sequence, copy, round;
 	var active = true;
 	var mode = 'normal';
@@ -66,7 +66,7 @@
 				clearInterval(interval);
 				activateSimonBoard();
             }
-       }, 700);
+       }, 600);
 	}
 
 	function registerClick(e) {
@@ -104,20 +104,18 @@
 		if (mode !== 'sound-only') {
 			$('[data-tile=' + tile + ']').animate({
 				opacity: 1
-			}, 300, function() {
+			}, 250, function() {
 				setTimeout(function() {
 					$('[data-tile=' + tile + ']').css('opacity', 0.6);
-				}, 300);
+				}, 250);
 			});
 		}
 	}
 
 	function playSound(tile) {
 		if (mode !== 'light-only') {
-			var audio = $('<audio autoplay></audio>');
-			audio.append('<source src="sounds/' + tile + '.ogg" type="audio/ogg" />');
-			audio.append('<source src="sounds/' + tile + '.mp3" type="audio/mp3" />');
-			$('[data-action=sound]').html(audio);
+			var audio = $('[data-sound=' + tile + ']').closest('audio')[0];
+			audio.play();
 		}
 	}
 

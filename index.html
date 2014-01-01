@@ -15,10 +15,30 @@
 	<h1>Simon Says</h1>
 		<div class="simon">
 			<ul>
-				<li class="red" data-tile="1"></li>
-				<li class="blue" data-tile="2"></li>
-				<li class="yellow" data-tile="3"></li>
-				<li class="green" data-tile="4"></li>
+				<li class="red" data-tile="1">
+					<audio id="sound1" data-sound="1" preload="auto">
+						<source src="sounds/1.ogg" type="audio/ogg" />
+						<source src="sounds/1.mp3" type="audio/mp3" />
+				</audio>
+				</li>
+				<li class="blue" data-tile="2">
+					<audio data-sound="2" preload="auto">
+						<source src="sounds/2.ogg" type="audio/ogg" />
+						<source src="sounds/2.mp3" type="audio/mp3" />
+					</audio>
+				</li>
+				<li class="yellow" data-tile="3">
+					<audio data-sound="3" preload="auto">
+						<source src="sounds/3.ogg" type="audio/ogg" />
+						<source src="sounds/3.mp3" type="audio/mp3" />
+					</audio>
+				</li>
+				<li class="green" data-tile="4">
+					<audio data-sound="4" preload="auto">
+						<source src="sounds/4.ogg" type="audio/ogg" />
+						<source src="sounds/4.mp3" type="audio/mp3" />
+					</audio>
+				</li>
 			</ul>
 		</div>
 		<div class="game-info">
@@ -33,7 +53,6 @@
 			<input type="radio" name="mode" value="light-only">Light Only<br>
 			<input type="radio" name="mode" value="free-board">Free board
 		</div>
-		<div data-action="sound"></div>
 	</div>
 	<footer>
 		Created by <a href="http://kellyking.me">Kelly King</a>
