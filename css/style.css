@@ -98,6 +98,7 @@ p[data-action="lose"] {
 
 .game-info button {
 	width: 5em;
+	box-sizing: border-box;
 	font-size: 1.4em;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
@@ -105,6 +106,7 @@ p[data-action="lose"] {
 	border: none;
 	padding: 0.3em 0.6em;
 }
+
 .game-info button:hover {
 	background: #78BCFF;
 }
@@ -113,6 +115,19 @@ p[data-action="lose"] {
 	margin-top: 30px;
 	margin-bottom: 0;
 }
+
 .game-options input[type="radio"] {
 	margin-right: 10px;
+}
+
+.hoverable:hover {
+	cursor: pointer;
+}
+
+footer {
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	clear: both;
+	text-align: center;
 }
