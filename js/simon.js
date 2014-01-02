@@ -17,6 +17,7 @@
 		newRound();
 	}
 
+	// add a new color to the sequence and animate it to the user
 	function newRound() {
 		$('[data-round]').text(++round);
 		sequence.push(randomNumber());
