@@ -1,18 +1,13 @@
 (function() {
-	'use strict';
+    'use strict';
+    var sequence, copy, round, active = true, mode = 'normal';
 
-	var sequence, copy, round;
-	var active = true;
-	var mode = 'normal';
+    $(document).ready(initSimon);
 
-	$(document).ready(function() {
-		initSimon();
-	});
-	
-	function initSimon() {
-		$('[data-action=start]').on('click', startGame);
-		$('input[name=mode]').on('change', changeMode);
-	}
+    function initSimon() {
+        $('[data-action=start]').on('click', startGame);
+        $('input[name=mode]').on('change', changeMode);
+    }
 
 	function startGame() {
 		sequence = [];
@@ -22,13 +17,14 @@
 		newRound();
 	}
 
-function newRound() {
-	$('[data-round]').text(++round);
+	function newRound() {
+		$('[data-round]').text(++round);
 		sequence.push(randomNumber());
 		copy = sequence.slice(0);
 		animate(sequence);
 	}
 
+	// allow user to interact with the game
 	function activateSimonBoard(){
 		$('.simon')
 			.on('click', '[data-tile]', registerClick)
@@ -45,6 +41,7 @@ function newRound() {
 		$('[data-tile]').addClass('hoverable');
 	}
 
+	// prevent user from replaying pattern until sequence is done animating
 	function deactivateSimonBoard() {
 		if (mode !== 'free-board') {
 			$('.simon')
@@ -56,6 +53,9 @@ function newRound() {
 		}
 	}
 
+	// the game is controlled primarily through this function, along with checkLose().
+	// Since the player can never actually "win", we just listen for clicks as the user 
+	// plays the sequence and each time, check if they lost
 	function registerClick(e) {
 		var desiredResponse = copy.shift();
 		var actualResponse = $(e.target).data('tile');
@@ -63,6 +63,10 @@ function newRound() {
 		checkLose();
 	}
 
+	// three possible situations:
+	// 1. The user clicked the wrong color (end the game)
+	// 2. The user entered the right color, but is not finished with the sequence (do nothing)
+	// 3. The user entered the right color and just completed the sequence (start a new round)
 	function checkLose() {
 		// copy array will be empty when user has successfully completed sequence
 		if (copy.length === 0 && active) {
@@ -76,9 +80,9 @@ function newRound() {
 	}
 
 	function endGame() {
-		// notify the user that they lost
+		// notify the user that they lost and change the "round" text to zero
 		$('p[data-action=lose]').show();
-		$($('[data-round]')[0]).text('0');
+		$($('[data-round]').get(0)).text('0');
 	}
 
 	function changeMode(e) {
@@ -93,12 +97,12 @@ function newRound() {
 			playSound(sequence[i]);
 			lightUp(sequence[i]);
 
-	        i++;
-	        if (i >= sequence.length) {
+			i++;
+			if (i >= sequence.length) {
 				clearInterval(interval);
 				activateSimonBoard();
-	        }
-	   }, 600);
+			}
+		}, 600);
 	}
 
 	function lightUp(tile) {
