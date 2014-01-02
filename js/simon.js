@@ -22,11 +22,11 @@
 		newRound();
 	}
 
-	function newRound() {
-		$('[data-round]').text(++round);
+function newRound() {
+	$('[data-round]').text(++round);
 		sequence.push(randomNumber());
 		copy = sequence.slice(0);
-		animate();
+		animate(sequence);
 	}
 
 	function activateSimonBoard(){
@@ -41,7 +41,7 @@
 			.on('mouseup', '[data-tile]', function(){
 				$(this).removeClass('active');
 			});
-			
+
 		$('[data-tile]').addClass('hoverable');
 	}
 
@@ -54,20 +54,6 @@
 
 			$('[data-tile]').removeClass('hoverable');
 		}
-	}
-
-	function animate() {
-		var i = 0;
-		var interval = setInterval(function() {
-			playSound(sequence[i]);
-			lightUp(sequence[i]);
-
-            i++;
-            if (i >= sequence.length) {
-				clearInterval(interval);
-				activateSimonBoard();
-            }
-       }, 600);
 	}
 
 	function registerClick(e) {
@@ -100,6 +86,20 @@
 	}
 
 	/*----------------- Helper functions -------------------*/
+
+	function animate(sequence) {
+		var i = 0;
+		var interval = setInterval(function() {
+			playSound(sequence[i]);
+			lightUp(sequence[i]);
+
+	        i++;
+	        if (i >= sequence.length) {
+				clearInterval(interval);
+				activateSimonBoard();
+	        }
+	   }, 600);
+	}
 
 	function lightUp(tile) {
 		if (mode !== 'sound-only') {
