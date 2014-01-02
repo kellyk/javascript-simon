@@ -1,13 +1,13 @@
 (function() {
-    'use strict';
-    var sequence, copy, round, active = true, mode = 'normal';
+	'use strict';
+	var sequence, copy, round, active = true, mode = 'normal';
 
-    $(document).ready(initSimon);
+	$(document).ready(initSimon);
 
-    function initSimon() {
-        $('[data-action=start]').on('click', startGame);
-        $('input[name=mode]').on('change', changeMode);
-    }
+	function initSimon() {
+		$('[data-action=start]').on('click', startGame);
+		$('input[name=mode]').on('change', changeMode);
+	}
 
 	function startGame() {
 		sequence = [];

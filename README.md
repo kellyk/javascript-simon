@@ -1,5 +1,5 @@
-javascript-simon
+Javascript Simon
 ================
 
-Simon Says game. Demo at: 
+Demo at: 
 http://kellyking.me/projects/simon
