@@ -41,6 +41,7 @@
 			.on('mouseup', '[data-tile]', function(){
 				$(this).removeClass('active');
 			});
+			
 		$('[data-tile]').addClass('hoverable');
 	}
 
@@ -114,8 +115,10 @@
 
 	function playSound(tile) {
 		if (mode !== 'light-only') {
-			var audio = $('[data-sound=' + tile + ']').closest('audio')[0];
-			audio.play();
+			var audio = $('<audio autoplay></audio>');
+			audio.append('<source src="sounds/' + tile + '.ogg" type="audio/ogg" />');
+			audio.append('<source src="sounds/' + tile + '.mp3" type="audio/mp3" />');
+			$('[data-action=sound]').html(audio);
 		}
 	}
 
