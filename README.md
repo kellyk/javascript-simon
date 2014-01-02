@@ -1,4 +1,5 @@
 javascript-simon
 ================
 
-Simon Says game
+Simon Says game. Demo at: 
+http://kellyking.me/projects/simon
