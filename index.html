@@ -2,41 +2,52 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name=viewport content="width=device-width, initial-scale=1">
 	<title>Simon Says - JavaScript</title>
 	<link rel="stylesheet" href="css/style.css" />
-	
-	<script src="js/jquery.js"></script>
-	<script src="js/simon.js"></script>
-
+	<script data-main="js/main" src="js/lib/require.min.js"></script>
 </head>
 <body>
 	<a href="https://github.com/kellyk/javascript-simon"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-	<div class="container">
-	<h1>Simon Says</h1>
-		<div class="simon">
-			<ul>
-				<li class="red" data-tile="1"></li>
-				<li class="blue" data-tile="2"></li>
-				<li class="yellow" data-tile="3"></li>
-				<li class="green" data-tile="4"></li>
-			</ul>
-		</div>
-		<div class="game-info">
-			<h2>Round: <span data-round="0">0</span></h2>
-			<button data-action="start" >Start</button>
-			<p data-action="lose">Sorry, you lost after <span data-round="0"></span> rounds!</p>
-		</div>
-		<div class="game-options">
-			<h2>Game Options:</h2>
-			<input type="radio" name="mode" value="normal" checked>Normal<br>
-			<input type="radio" name="mode" value="sound-only">Sound Only<br>
-			<input type="radio" name="mode" value="light-only">Light Only<br>
-			<input type="radio" name="mode" value="free-board">Free board
-		</div>
+	<div class="wrapper">
+		<h1>Simon Says</h1>
+			<div class="game-board">
+				<div class="simon">
+					<ul>
+						<li class="red" data-tile="1"></li>
+						<li class="blue" data-tile="2"></li>
+						<li class="yellow" data-tile="3"></li>
+						<li class="green" data-tile="4"></li>
+					</ul>
+				</div>
+			</div>
+			<div class="game-info">
+				<h2>Round: <span data-round="0">0</span></h2>
+				<button data-action="start" >Start</button>
+				<p data-action="lose">Sorry, you lost after <span data-round="0"></span> rounds!</p>
+			</div>
+			<div class="game-options">
+				<h2>Game Options:</h2>
+				<input type="radio" name="mode" value="normal" checked>Normal<br>
+				<input type="radio" name="mode" value="sound-only">Sound Only<br>
+				<input type="radio" name="mode" value="light-only">Light Only<br>
+				<input type="radio" name="mode" value="free-board">Free board
+			</div>
+		<div data-action="sound"></div>
+		<footer>
+			Created by <a href="http://kellyking.me">Kelly King</a>
+		</footer>
 	</div>
-	<div data-action="sound"></div>
-	<footer>
-		Created by <a href="http://kellyking.me">Kelly King</a>
-	</footer>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-37765307-2', 'kellyking.me');
+	  ga('send', 'pageview');
+
+	</script>
 </body>
 </html>
