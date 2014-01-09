@@ -122,14 +122,12 @@ define(['jquery'], function($) {
 
 		lightUp: function(tile) {
 			if (this.mode !== 'sound-only') {
-				$('[data-tile=' + tile + ']').animate({
-					opacity: 1
-				}, 250, function() {
-					setTimeout(function() {
-						$('[data-tile=' + tile + ']').css('opacity', 0.6);
-					}, 250);
-				});
+				var $tile = $('[data-tile=' + tile + ']').addClass('lit');
+				window.setTimeout(function() {
+					$tile.removeClass('lit');
+				}, 300);
 			}
+
 		},
 
 		// we are embedding the sound file on the fly for the following benefits:
