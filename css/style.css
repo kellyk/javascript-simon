@@ -58,8 +58,20 @@ p[data-action="lose"] {
     box-shadow: 2px 1px 12px #aaa;
 }
 
-.red, .blue, .yellow, .green {
+.tile {
 	opacity: 0.6;
+	-webkit-transition: opacity 250ms ease;
+	-moz-transition: opacity 250ms ease;
+	-ms-transition: opacity 250ms ease;
+	-o-transition: opacity 250ms ease;
+	transition: opacity 250ms ease;
+}
+
+.tile.lit {
+	opacity: 1;
+}
+
+.red, .blue, .yellow, .green {
 	height: 290px;
 	-webkit-border-radius: 150px 150px 150px 150px;
 	border-radius: 150px 150px 150px 150px;
